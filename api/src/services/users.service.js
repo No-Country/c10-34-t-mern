@@ -1,28 +1,4 @@
 import UserSchema from "../models/Users.js"
-import{encrypt} from "../utils/handleBcrypt.js"
-const registerUser=async(user)=>{
-  const {
-    name,
-    lastName,
-    email,
-    dataOfBirth,
-    password,
-    homeAddress,
-    age
-  }=user
-  const hashPassword = await encrypt(password)
-  const newUser = {
-    name,
-    lastName,
-    email:email.toLowerCase(),
-    dataOfBirth,
-    password:hashPassword,
-    homeAddress,
-    age
-  }
-  const response = await UserSchema.create(newUser)
-  return response
-}
 
 const getDetailUser=async(id)=>{
   const response = await UserSchema.findOne({_id:id})
@@ -44,4 +20,4 @@ const deleteOneUser = async(id)=>{
   return response
 }
 
-export {registerUser,getDetailUser,getAllUsers,updateOneUser,deleteOneUser}
+export {getDetailUser,getAllUsers,updateOneUser,deleteOneUser}
