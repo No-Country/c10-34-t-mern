@@ -1,4 +1,4 @@
-import {registerUser,getDetailUser,getAllUsers,updateOneUser,deleteOneUser} from "../services/users.service.js"
+import {getDetailUser,getAllUsers,updateOneUser,deleteOneUser} from "../services/users.service.js"
 
 const getUsers = async(req,res,next)=>{
   try {
@@ -13,15 +13,6 @@ const getUser = async(req,res,next)=>{
     const {id}=req.params
     const user = await getDetailUser(id) 
     res.json({result:user})
-  } catch (error) {
-    next(error)
-  }
-}
-const createUser = async(req,res,next)=>{
-  try {
-    const {body}=req
-    const userCreated = await registerUser(body)
-    res.json({result:userCreated})
   } catch (error) {
     next(error)
   }
@@ -46,4 +37,4 @@ const deleteUser = async(req,res,next)=>{
   }
 }
 
-export {getUsers,getUser,createUser,updateUser,deleteUser}
+export {getUsers,getUser,updateUser,deleteUser}
