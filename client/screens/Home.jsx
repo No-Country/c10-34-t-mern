@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity, ScrollView } from "react-native";
 import {useSafeAreaInsets} from "react-native-safe-area-context"
 import Header from "../components/Header/Header";
 import { useState } from "react";
@@ -10,7 +10,7 @@ const Home = () => {
     const [isMap, setIsMap] = useState(false)
     
     return(
-        <View
+        <ScrollView
         style={{
             paddingTop: insets.top,
             paddingBottom: insets.bottom,
@@ -32,7 +32,7 @@ const Home = () => {
                 </TouchableOpacity>
             </View>
             {isMap ? <Mapa/> : <CercaTuyo/>}
-        </View>
+        </ScrollView>
     )
 }
 
