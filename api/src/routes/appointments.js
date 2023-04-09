@@ -3,9 +3,9 @@ import { registerAppointment, getAppointments, getAppointment, updateAppointment
 import checkAuth from "../middleware/checkAuth.js";
 import checkRol from "../middleware/checkRol.js";
 const router = Router()
-router.post('/', checkAuth, checkRol(['admin']), registerAppointment)
-router.get('/', checkAuth, checkRol(['admin']), getAppointments)
-router.get('/:id', checkAuth, checkRol(['admin']), getAppointment)
+router.post('/', checkAuth, checkRol(['admin', 'user']), registerAppointment)
+router.get('/', checkAuth, checkRol(['admin', 'user']), getAppointments)
+router.get('/:id', checkAuth, checkRol(['admin', 'user']), getAppointment)
 router.patch('/:id', checkAuth, checkRol(['admin']), updateAppointment)
 router.delete('/:id', checkAuth, checkRol(['admin']), deleteAppointment)
 
