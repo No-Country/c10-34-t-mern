@@ -19,7 +19,21 @@ const createAppointment = async(data) => {
     return response
 }
 const getDetailAppointment = async(id) => {
-    const response = await AppointmentSchema.findOne({ _id: id })
+    const response = await AppointmentSchema.findOne({ _id: id }).populate('product').populate('service')
+        //TO-DO
+        /*let appointment_detail = await AppointmentSchema.aggregate(
+        [{
+                $lookup: {
+                    from: "products",
+                    localField: "product",
+                    foreignField: "_id",
+                    as: "product_detail"
+                }
+            },
+            { $unwind: "$product_detail" }
+        ]
+    )
+    return appointment_detail*/
     return response
 }
 
