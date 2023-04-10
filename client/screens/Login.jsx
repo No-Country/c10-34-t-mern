@@ -90,7 +90,7 @@ const Login = ({navigation}) => {
             width: "100%",
             borderRadius: 10,
           }}
-          onPress={() => navigation.navigate("Login")}
+          onPress={() => navigation.navigate("Inicio")}
         >
           <Text
             style={{
