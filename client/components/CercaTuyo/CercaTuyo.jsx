@@ -5,7 +5,7 @@ import CardS from "../CardS/CardS";
 import { useState } from "react";
 import { Ionicons } from '@expo/vector-icons'; 
 
-const CercaTuyo = () => {
+const CercaTuyo = ({navigation}) => {
 
     const [search, setSearch] = useState("")
     const locales = [
@@ -42,11 +42,11 @@ const CercaTuyo = () => {
             </View>
             {search === "" ?
             <View>
-                <CardXl/>
+                <CardXl navigation={navigation}/>
                 <Text style={{fontWeight: "bold", fontSize: 22, marginStart: 20, marginBottom: 20}}>20 minutos o menos</Text>
                 <FlatList
                 data={locales}
-                renderItem={({item}) => <CardS data={item}/>}
+                renderItem={({item}) => <CardS data={item} navigation={navigation}/>}
                 keyExtractor={item => item.name}
                 horizontal={true}
                 style={styles.listaContainer}

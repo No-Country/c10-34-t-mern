@@ -5,7 +5,7 @@ import { useState } from "react";
 import Mapa from "../components/Mapa/Mapa";
 import CercaTuyo from "../components/CercaTuyo/CercaTuyo";
 
-const Home = () => {
+const Home = ({navigation}) => {
     const insets = useSafeAreaInsets();
     const [isMap, setIsMap] = useState(false)
     
@@ -31,7 +31,7 @@ const Home = () => {
                     <Text style={styles.textNav}>Ver mapa</Text>
                 </TouchableOpacity>
             </View>
-            {isMap ? <Mapa/> : <CercaTuyo/>}
+            {isMap ? <Mapa/> : <CercaTuyo navigation={navigation}/>}
         </ScrollView>
     )
 }

@@ -1,10 +1,10 @@
 import { Text, View, StyleSheet, ImageBackground, TouchableOpacity } from "react-native"
 import { Entypo, Feather, AntDesign  } from '@expo/vector-icons'; 
 
-const CardXl = () => {
+const CardXl = ({navigation}) => {
     return(
         <View style={{alignItems: "center", justifyContent: "center", padding: 20}}>
-            <TouchableOpacity style={styles.cardContainer}>
+            <TouchableOpacity style={styles.cardContainer} onPress={() => navigation.navigate('Local')}>
                 <ImageBackground style={{height: 200, position: "relative"}} source={require('../../assets/imagen.png')} resizeMode="cover">
                     <View style={styles.iconsContainer}>
                         <TouchableOpacity style={styles.iconContainer}>

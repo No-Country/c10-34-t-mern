@@ -1,10 +1,10 @@
 import { ImageBackground, Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-const CardS = ({data}) => {
+const CardS = ({data, navigation}) => {
 
     return(
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Local')}>
             <ImageBackground style={styles.imagenContainer} source={require('../../assets/imagen.png')} resizeMode="cover">
                 <LinearGradient style={styles.containerGradiente} colors={["transparent", "#000000"]}>
                     <Text style={styles.nombreLocal}>{data.name}</Text>
