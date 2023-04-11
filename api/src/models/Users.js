@@ -15,14 +15,11 @@ const UserSchema = new mongoose.Schema(
     dateOfBirth: {
       type: String,
     },
+    img:{
+      type: String,
+    },
     password: {
       type: String,
-    },
-    homeAddress: {
-      type: String,
-    },
-    age: {
-      type: Number,
     },
     role: {
       type: ["user", "admin"],
