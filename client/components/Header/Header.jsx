@@ -15,12 +15,11 @@ const Header = () => {
 const styles = StyleSheet.create({
     header: {
         justifyContent: "center",
-        alignItems: "center",
-        padding: 5
+        alignItems: "center"
     },
     image: {
-        width: 150,
-        height: 100
+        width: 100,
+        height: 60
     }
 })
 
