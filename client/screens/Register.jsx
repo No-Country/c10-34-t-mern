@@ -9,8 +9,21 @@ import {
   TextInput,
 } from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
+import { Controller, useForm } from "react-hook-form";
+import axios from "axios";
 
 const Register = ({ navigation }) => {
+  const { control, handleSubmit, errors } = useForm();
+  const onSubmit = (data) => {
+    const url = "https://paracuando-team1.academlo.tech/api/v1/auth/sign-up";
+    axios
+      .post(url, data)
+      .then((response) => {
+        console.log(response.data);
+        navigation.navigate("Login");
+      })
+      .catch((error) => console.log(error.JSON()));
+  };
   return (
     <SafeAreaView>
       <View
@@ -31,7 +44,7 @@ const Register = ({ navigation }) => {
       <View
         style={{
           paddingHorizontal: 30,
-          paddingTop: 50,
+          paddingTop: 20,
         }}
       >
         <Text
@@ -51,41 +64,91 @@ const Register = ({ navigation }) => {
           marginHorizontal: 30,
         }}
       >
-        <TextInput
-          placeholder="Email"
-          placeholderTextColor={Colors.darkText}
-          style={{
-            fontSize: 18,
-            padding: 15,
-            backgroundColor: "white",
-            borderRadius: 10,
-          }}
+        <Controller
+          name="firstName"
+          rules={{ required: true }}
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              placeholder="firstName"
+              placeholderTextColor={Colors.darkText}
+              style={{
+                fontSize: 18,
+                padding: 15,
+                backgroundColor: "white",
+                borderRadius: 10,
+              }}
+            />
+          )}
         />
 
-        <TextInput
-          placeholder="Password"
-          placeholderTextColor={Colors.darkText}
-          secureTextEntry
-          style={{
-            fontSize: 18,
-            padding: 15,
-            backgroundColor: "white",
-            borderRadius: 10,
-            marginTop: 15,
-          }}
+        <Controller
+          name="lastName"
+          rules={{ required: true }}
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              placeholder="lastName"
+              placeholderTextColor={Colors.darkText}
+              style={{
+                fontSize: 18,
+                padding: 15,
+                backgroundColor: "white",
+                borderRadius: 10,
+                marginTop: 15,
+              }}
+            />
+          )}
         />
 
-        <TextInput
-          placeholder="Confirmar Password"
-          placeholderTextColor={Colors.darkText}
-          secureTextEntry
-          style={{
-            fontSize: 18,
-            padding: 15,
-            backgroundColor: "white",
-            borderRadius: 10,
-            marginTop: 15,
-          }}
+        <Controller
+          name="email"
+          rules={{ required: true }}
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              placeholder="email"
+              placeholderTextColor={Colors.darkText}
+              style={{
+                fontSize: 18,
+                padding: 15,
+                backgroundColor: "white",
+                borderRadius: 10,
+                marginTop: 15,
+              }}
+            />
+          )}
+        />
+
+        <Controller
+          name="password"
+          rules={{ required: true }}
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              placeholder="password"
+              placeholderTextColor={Colors.darkText}
+              style={{
+                fontSize: 18,
+                padding: 15,
+                backgroundColor: "white",
+                borderRadius: 10,
+                marginTop: 15,
+              }}
+            />
+          )}
         />
       </View>
 
@@ -95,13 +158,14 @@ const Register = ({ navigation }) => {
         }}
       >
         <TouchableOpacity
+          title="Submit"
+          onPress={handleSubmit(onSubmit)}
           style={{
             backgroundColor: "blue",
             paddingVertical: 15,
             width: "100%",
             borderRadius: 10,
           }}
-          onPress={() => navigation.navigate("Login")}
         >
           <Text
             style={{
@@ -123,18 +187,15 @@ const Register = ({ navigation }) => {
           justifyContent: "center",
         }}
       >
-        <TouchableOpacity 
-        onPress={() => navigation.navigate("Login")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
           <Text
             style={{
               fontWeight: 600,
-             
             }}
           >
             Ya tengo una cuenta
           </Text>
         </TouchableOpacity>
-       
       </View>
     </SafeAreaView>
   );
