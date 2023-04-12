@@ -1,18 +1,18 @@
-import { Text, View, StyleSheet, Button } from "react-native"
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native"
 import {useSafeAreaInsets} from "react-native-safe-area-context"
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useState } from "react"
+import { AntDesign } from "@expo/vector-icons";
+import Header from "../components/Header/Header";
 
-const SelectDate = () => {
+const SelectDate = ({navigation}) => {
     const insets = useSafeAreaInsets()
 
     const [date, setDate] = useState(new Date());
-    const [hour, setHour] = useState(new Date());
 
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate;
-        //setDate(currentDate);
-        //setHour(currentDate)
+        setDate(currentDate);
     };
 
     return(
@@ -27,29 +27,70 @@ const SelectDate = () => {
             justifyContent: "center"
         }}
         >
-            <Text>Reservá tu próximo look</Text>
-            <Text>selected: {date.toLocaleString()}</Text>
-                <DateTimePicker
-                value={new Date()}
-                mode='date'
-                is24Hour={true}
-                onChange={onChange}
-                />
-                <DateTimePicker
-                mode='time'
-                is24Hour={true}
-                value={new Date()}
-                onChange={onChange}
-                />
+            <Header/>
+            <View style={styles.containerDate}>
+                <Text style={styles.title}>Reservá tu próximo look</Text>
+                <View style={styles.containerDateText} >
+                    <Text style={styles.text}>Selecciona el dia</Text>
+                    <DateTimePicker
+                        value={date}
+                        mode='date'
+                        is24Hour={true}
+                        onChange={onChange}
+                    />
+                </View>
+                <View style={styles.containerDateText}>
+                    <Text style={styles.text} >Seleccion la hora</Text>
+                    <DateTimePicker
+                        mode='time'
+                        is24Hour={true}
+                        value={date}
+                        onChange={onChange}
+                    />
+                </View>
+            </View>
+            <Text>Tu reserva sera agendada para el: {date.toLocaleString()}</Text>
+            <View style={styles.containerButton}>
+                <TouchableOpacity
+                    style={{
+                        backgroundColor: "blue",
+                        paddingVertical: 15,
+                        borderRadius: 10,
+                        marginBottom: 25,
+                        width: 250,
+                        alignItems: "center", 
+                    }}
+                    onPress={() => navigation.navigate("Profesional")}
+                >
+                        <AntDesign name="arrowright" size={24} color="white" />
+                </TouchableOpacity> 
+            </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    buttonContainer: {
-        padding: 15,
-        backgroundColor: "blue",
-        borderRadius: 10
+    containerButton: {
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 10
+    },
+    containerDate:{
+        height: "70%",
+        justifyContent: "space-around",
+        alignItems: "center"
+    },
+    title: {
+        fontWeight: "bold",
+        fontSize: 25
+    },
+    containerDateText:{
+        alignItems: "center"
+    },
+    text: {
+        fontWeight: "bold",
+        fontSize: 18,
+        marginBottom: 10
     }
 })
 

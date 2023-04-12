@@ -3,6 +3,7 @@ import Local from "../../screens/Local"
 import Home from "../../screens/Home"
 import SelectDate from "../../screens/SelectDate"
 import Profesional from "../../screens/Profesional"
+import Pay from "../../screens/Pay"
 
 const StoreStack = () => {
     const Tab = createStackNavigator()
@@ -16,6 +17,7 @@ const StoreStack = () => {
             <Tab.Screen name="Local" component={Local}/>
             <Tab.Screen name="SelectDate" component={SelectDate}/>
             <Tab.Screen name="Profesional" component={Profesional}/>
+            <Tab.Screen name="Pay" component={Pay}/>
         </Tab.Navigator>
     )
 }
