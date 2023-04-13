@@ -11,12 +11,15 @@ const UserSchema = new mongoose.Schema(
     email: {
       type: String,
       unique: true,
+      require: true,
+      trim: true, // Limpia los campos en blanco a derecha o izquierda
     },
     dateOfBirth: {
       type: String,
     },
     password: {
       type: String,
+      require: true,
     },
     homeAddress: {
       type: String,
