@@ -7,12 +7,13 @@ import Header from "../components/Header/Header";
 
 const SelectDate = ({navigation}) => {
     const insets = useSafeAreaInsets()
-
+    const [datePicker, setDatePicker] = useState(true);
     const [date, setDate] = useState(new Date());
 
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate;
         setDate(currentDate);
+        setDatePicker(false)
     };
 
     return(
@@ -31,23 +32,31 @@ const SelectDate = ({navigation}) => {
             <View style={styles.containerDate}>
                 <Text style={styles.title}>Reservá tu próximo look</Text>
                 <View style={styles.containerDateText} >
-                    <Text style={styles.text}>Selecciona el dia</Text>
+                    <TouchableOpacity style={styles.text}
+                    onPress={()=> setDatePicker(true)}
+                    >
+                        <Text>Selecciona el dia</Text>
+                    </TouchableOpacity>
+                    {datePicker ? 
                     <DateTimePicker
-                        value={date}
-                        mode='date'
-                        is24Hour={true}
-                        onChange={onChange}
+                    value={date}
+                    mode='date'
+                    is24Hour={true}
+                    onChange={onChange}
+                    disabled={false}
                     />
+                    : ""}
                 </View>
-                <View style={styles.containerDateText}>
+                {/* <View style={styles.containerDateText}>
                     <Text style={styles.text} >Seleccion la hora</Text>
                     <DateTimePicker
                         mode='time'
                         is24Hour={true}
                         value={date}
                         onChange={onChange}
+                        disabled={false}
                     />
-                </View>
+                </View> */}
             </View>
             <Text>Tu reserva sera agendada para el: {date.toLocaleString()}</Text>
             <View style={styles.containerButton}>
