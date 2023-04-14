@@ -4,11 +4,13 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { useState } from "react"
 import { AntDesign } from "@expo/vector-icons";
 import Header from "../components/Header/Header";
+import ModalHour from "../components/ModalHour/ModalHour";
 
 const SelectDate = ({navigation}) => {
     const insets = useSafeAreaInsets()
     const [datePicker, setDatePicker] = useState(true);
     const [date, setDate] = useState(new Date());
+    const [hourModal, setHourModal] = useState(false)
 
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate;
@@ -23,7 +25,6 @@ const SelectDate = ({navigation}) => {
             paddingBottom: insets.bottom,
             paddingLeft: insets.left,
             paddingRight: insets.right,
-            flex: 1,
             alignItems: "center",
             justifyContent: "center"
         }}
@@ -31,11 +32,15 @@ const SelectDate = ({navigation}) => {
             <Header/>
             <View style={styles.containerDate}>
                 <Text style={styles.title}>Reservá tu próximo look</Text>
-                <View style={styles.containerDateText} >
-                    <TouchableOpacity style={styles.text}
+                <View style={styles.containerDateText}>
+                    <TouchableOpacity
                     onPress={()=> setDatePicker(true)}
+                    style={styles.containerButton}
                     >
-                        <Text>Selecciona el dia</Text>
+                        <Text style={styles.text}>Selecciona el dia</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.containerButton} onPress={() => setHourModal(true)}>
+                        <Text style={styles.text}>Selecciona la hora</Text>
                     </TouchableOpacity>
                     {datePicker ? 
                     <DateTimePicker
@@ -47,16 +52,6 @@ const SelectDate = ({navigation}) => {
                     />
                     : ""}
                 </View>
-                {/* <View style={styles.containerDateText}>
-                    <Text style={styles.text} >Seleccion la hora</Text>
-                    <DateTimePicker
-                        mode='time'
-                        is24Hour={true}
-                        value={date}
-                        onChange={onChange}
-                        disabled={false}
-                    />
-                </View> */}
             </View>
             <Text>Tu reserva sera agendada para el: {date.toLocaleString()}</Text>
             <View style={styles.containerButton}>
@@ -74,6 +69,7 @@ const SelectDate = ({navigation}) => {
                         <AntDesign name="arrowright" size={24} color="white" />
                 </TouchableOpacity> 
             </View>
+            <ModalHour setModalState={setHourModal} modalState={hourModal}/>
         </View>
     )
 }
@@ -85,9 +81,9 @@ const styles = StyleSheet.create({
         padding: 10
     },
     containerDate:{
-        height: "70%",
         justifyContent: "space-around",
-        alignItems: "center"
+        alignItems: "center",
+        height: "75%"
     },
     title: {
         fontWeight: "bold",

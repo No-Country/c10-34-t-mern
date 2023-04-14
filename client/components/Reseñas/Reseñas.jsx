@@ -38,11 +38,11 @@ const styles = StyleSheet.create({
     reviewItem: {
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-between",
         marginVertical: 15
     },
     reviewContainer: {
-        padding: 20
+        padding: 10,
+        height: "100%"
     },
     avatar: {
         width: 50,

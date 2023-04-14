@@ -63,7 +63,7 @@ const Local = ({navigation}) => {
             }
             {isService ? 
             <View>
-                <ScrollView style={{height: 210}}>
+                <ScrollView style={{height: "45%"}}>
                     <ServicesList/>
                 </ScrollView>
                 <View style={styles.containerButton}>
@@ -84,7 +84,7 @@ const Local = ({navigation}) => {
             </View>
             : 
             <View>
-                <ScrollView style={{height: 210}}>
+                <ScrollView style={{height: "45%"}}>
                     {isPrice ? <Precios/> : <Reseñas/> }
                 </ScrollView>
                 <View style={styles.containerButton}>
