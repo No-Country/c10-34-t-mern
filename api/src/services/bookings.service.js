@@ -16,6 +16,9 @@ const createBooking = async(data) => {
         product
     }
     const response = await BookingSchema.create(newBooking)
+        /*const response = await BookingSchema.create(newBooking).then((response) =>
+        response.populate('product', { name: 1 }))
+        */
     return response
 }
 const getDetailBooking = async(id) => {

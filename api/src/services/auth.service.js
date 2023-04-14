@@ -7,7 +7,8 @@ const registerService = async(data) => {
         lastName,
         email,
         dataOfBirth,
-        password
+        password,
+        isBarber
     } = data
     const checkEmail = await UserSchema.findOne({ email: email })
     if (checkEmail) return "ALREADY USER"
@@ -17,7 +18,8 @@ const registerService = async(data) => {
         lastName,
         email: email.toLowerCase(),
         dataOfBirth,
-        password: hashPassword
+        password: hashPassword,
+        isBarber
     }
     const response = await UserSchema.create(newUser)
     response.set("password", undefined, { strict: false })
