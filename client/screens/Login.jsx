@@ -21,7 +21,10 @@ const Login = ({ navigation }) => {
     const url = "https://paracuando-team1.academlo.tech/api/v1/auth/login";
     axios
       .post(url, data)
-      .then((response) => console.log(response.data))
+      .then((response) => {
+        navigation.navigate('Inicio')
+        console.log(response.data)
+      })
       .catch((error) => console.log(error.JSON()));
   };
 

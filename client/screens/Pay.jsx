@@ -70,7 +70,7 @@ const Pay = ({navigation}) => {
                         width: 250,
                         alignItems: "center", 
                     }}
-                    onPress={() => navigation.navigate("Pay")}
+                    onPress={() => navigation.navigate("Final")}
                 >
                         <AntDesign name="arrowright" size={24} color="white" />
                 </TouchableOpacity> 

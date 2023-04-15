@@ -1,6 +1,11 @@
-import mongoose from "mongoose";
+import { Schema, model } from "mongoose";
 
+<<<<<<< HEAD
 const UserSchema = new mongoose.Schema({
+=======
+const UserSchema = new Schema(
+  {
+>>>>>>> develop
     name: {
         type: String,
     },
@@ -37,4 +42,9 @@ const UserSchema = new mongoose.Schema({
     versionKey: false,
 });
 
+<<<<<<< HEAD
 export default mongoose.model("Users", UserSchema);
+=======
+export const User = model("user", UserSchema);
+export default User;
+>>>>>>> develop
