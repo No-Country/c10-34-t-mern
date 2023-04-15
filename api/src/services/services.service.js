@@ -4,12 +4,14 @@ const createService = async(data) => {
     const {
         name,
         price,
-        description
+        description,
+        imgUrl
     } = data
     const newService = {
         name,
         price,
-        description
+        description,
+        imgUrl
     }
     const response = await ServiceSchema.create(newService)
     return response
