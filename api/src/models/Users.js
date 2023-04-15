@@ -1,11 +1,7 @@
 import { Schema, model } from "mongoose";
 
-<<<<<<< HEAD
-const UserSchema = new mongoose.Schema({
-=======
 const UserSchema = new Schema(
   {
->>>>>>> develop
     name: {
         type: String,
     },
@@ -25,12 +21,8 @@ const UserSchema = new Schema(
       type: String,
     },
     password: {
-<<<<<<< HEAD
-      type: String,
-=======
         type: String,
         require: true,
->>>>>>> develop
     },
     role: {
         type: ["user", "admin"],
@@ -49,9 +41,5 @@ const UserSchema = new Schema(
     versionKey: false,
 });
 
-<<<<<<< HEAD
-export default mongoose.model("Users", UserSchema);
-=======
 export const User = model("user", UserSchema);
 export default User;
->>>>>>> develop
