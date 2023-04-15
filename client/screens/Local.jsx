@@ -5,12 +5,14 @@ import { Feather, AntDesign, Ionicons, Entypo } from "@expo/vector-icons"
 import { useState } from "react"
 import Precios from "../components/Precios/Precios"
 import Reseñas from "../components/Reseñas/Reseñas"
+import ServicesList from "../components/ServicesList/ServicesList"
 
 const Local = ({navigation}) => {
     const insets = useSafeAreaInsets()
     const [isPrice, setIsPrice] = useState(true)
+    const [isService, setIsService] = useState(false)
     return(
-        <ScrollView
+        <View
         style={{
             paddingTop: insets.top,
             paddingBottom: insets.bottom,
@@ -19,7 +21,7 @@ const Local = ({navigation}) => {
         }}
         >
             <Header/>
-            <ImageBackground style={{height: 300, position: "relative"}} source={require('../assets/imagen.png')} resizeMode="cover">
+            <ImageBackground style={{height: 150, position: "relative"}} source={require('../assets/imagen.png')} resizeMode="cover">
                     <TouchableOpacity style={styles.iconBack} onPress={() => navigation.navigate('Locales')}>
                         <Ionicons name="arrow-back" size={34} color="#888888" />
                     </TouchableOpacity>
@@ -39,6 +41,13 @@ const Local = ({navigation}) => {
                     <Text style={styles.minutos}>10 min</Text>
                 </View>
             </View>
+            {isService ? 
+            <View style={styles.nav}> 
+                <TouchableOpacity style={styles.navItemActive}>
+                    <Text style={styles.textNav}>Elegir servicio</Text>
+                </TouchableOpacity>
+            </View>
+            :
             <View style={styles.nav}> 
                 <TouchableOpacity style={isPrice ? styles.navItemActive : styles.navItem}
                 onPress={()=>setIsPrice(true)}
@@ -51,16 +60,59 @@ const Local = ({navigation}) => {
                     <Text style={styles.textNav}>Reseñas</Text>
                 </TouchableOpacity>
             </View>
-            <ScrollView style={{height: 180}}>
-                {isPrice ? <Precios/> : <Reseñas/> }
-            </ScrollView>
-            <View style={{padding: 10}}>
-                <Button
-                title="Reservá tu turno"
-                color="blue"
-                />
+            }
+            {isService ? 
+            <View>
+                <ScrollView style={{height: "45%"}}>
+                    <ServicesList/>
+                </ScrollView>
+                <View style={styles.containerButton}>
+                    <TouchableOpacity
+                    style={{
+                        backgroundColor: "blue",
+                        paddingVertical: 15,
+                        borderRadius: 10,
+                        marginBottom: 25,
+                        width: 250,
+                        alignItems: "center", 
+                    }}
+                    onPress={() => navigation.navigate("SelectDate")}
+                    >
+                        <AntDesign name="arrowright" size={24} color="white" />
+                    </TouchableOpacity> 
+                </View>
             </View>
-        </ScrollView>
+            : 
+            <View>
+                <ScrollView style={{height: "45%"}}>
+                    {isPrice ? <Precios/> : <Reseñas/> }
+                </ScrollView>
+                <View style={styles.containerButton}>
+                    <TouchableOpacity
+                    style={{
+                        backgroundColor: "blue",
+                        paddingVertical: 15,
+                        borderRadius: 10,
+                        marginBottom: 25,
+                        width: 250 
+                    }}
+                    onPress={() => setIsService(true)}
+                    >
+                        <Text
+                            style={{
+                            color: "white",
+                            textAlign: "center",
+                            fontSize: 20,
+                            fontWeight: 600,
+                            }}
+                        >
+                            Reservá tu turno
+                        </Text>
+                    </TouchableOpacity> 
+                </View>
+            </View>}
+            
+        </View>
     )
 }
 
@@ -122,6 +174,11 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         borderBottomColor: "black",
         borderBottomWidth: 1
+    },
+    containerButton: {
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 10
     }
 }) 
 

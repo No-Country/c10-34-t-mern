@@ -1,12 +1,17 @@
 import { Router } from "express";
-import { getUsers, getUser, updateUser, deleteUser } from "../controllers/users.controller.js"
+import {
+  getUsers,
+  getUser,
+  updateUser,
+  deleteUser,
+} from "../controllers/users.controller.js";
 import checkAuth from "../middleware/checkAuth.js";
 import checkRol from "../middleware/checkRol.js";
-const router = Router()
-    //checkRol(['admin'])
-router.get('/', checkAuth, getUsers)
-router.get('/:id', checkAuth, getUser)
-router.patch('/:id', checkAuth, updateUser)
-router.delete('/:id', checkAuth, deleteUser)
+const router = Router();
 
-export default { router }
+router.get("/", checkAuth, checkRol(["admin"]), getUsers);
+router.get("/:id", checkAuth, checkRol(["admin"]), getUser);
+router.patch("/:id", checkAuth, checkRol(["admin"]), updateUser);
+router.delete("/:id", checkAuth, checkRol(["admin"]), deleteUser);
+
+export default { router };
