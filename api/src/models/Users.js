@@ -1,11 +1,6 @@
-import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
-<<<<<<< HEAD
-const UserSchema = new mongoose.Schema({
-=======
-const UserSchema = new Schema(
-  {
->>>>>>> develop
+const userSchema = new mongoose.Schema({
     name: {
         type: String,
     },
@@ -42,9 +37,4 @@ const UserSchema = new Schema(
     versionKey: false,
 });
 
-<<<<<<< HEAD
-export default mongoose.model("Users", UserSchema);
-=======
-export const User = model("user", UserSchema);
-export default User;
->>>>>>> develop
+export default mongoose.model("Users", userSchema);
