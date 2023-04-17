@@ -1,3 +1,4 @@
+import Booking from "../models/Booking.js"
 import BookingSchema from "../models/Booking.js"
 
 const createBooking = async(data) => {
@@ -39,6 +40,12 @@ const getDetailBooking = async(id) => {
     return booking_detail*/
     return response
 }
+const getBookingsListByUser = async(user_id) => {
+    const response = await BookingSchema.find({
+        user: { $eq: user_id }
+    })
+    return response
+}
 
 const getAllBookings = async() => {
     const response = await BookingSchema.find()
@@ -55,4 +62,4 @@ const deleteOneBooking = async(id) => {
     return response
 }
 
-export { createBooking, getDetailBooking, getAllBookings, updateOneBooking, deleteOneBooking }
+export { createBooking, getDetailBooking, getAllBookings, getBookingsListByUser, updateOneBooking, deleteOneBooking }
