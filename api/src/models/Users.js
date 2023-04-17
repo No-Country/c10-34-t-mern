@@ -2,39 +2,40 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
     name: {
-        type: String,
+      type: String,
     },
     lastName: {
-        type: String,
+      type: String,
     },
     email: {
-        type: String,
-        unique: true,
-        require: true,
-        trim: true, // Limpia los campos en blanco a derecha o izquierda
+      type: String,
+      unique: true,
+      require: true,
+      trim: true, // Limpia los campos en blanco a derecha o izquierda
     },
     dateOfBirth: {
-        type: String,
+      type: String,
     },
     password: {
-        type: String,
-        require: true,
+      type: String,
+      require: true,
     },
     role: {
-        type: ["user", "admin"],
-        default: "user",
+      type: ["user", "admin"],
+      default: "user",
     },
     status: {
-        type: String,
-        default: "active",
+      type: String,
+      default: "active",
     },
     imgURL: {
-        type: String
+      type: String,
     },
     isBarber: { type: Boolean, default: false },
-}, {
+  },
+  {
     timestamps: true,
     versionKey: false,
-});
-
+  }
+);
 export default mongoose.model("Users", userSchema);
