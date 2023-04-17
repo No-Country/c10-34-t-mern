@@ -17,9 +17,6 @@ const UserSchema = new Schema(
     dateOfBirth: {
         type: String,
     },
-    img:{
-      type: String,
-    },
     password: {
         type: String,
         require: true,
