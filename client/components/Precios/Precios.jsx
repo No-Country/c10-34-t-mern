@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     priceContainer: {
         padding: 20,
         justifyContent: "space-between",
-        height: "100%"
+        height: "90%"
     },
     priceItem: {
         flexDirection: "row",

@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet, Modal } from "react-native"
+import { View, Text, TouchableOpacity, StyleSheet, Modal, Image } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import Header from "../components/Header/Header"
 import { AntDesign } from "@expo/vector-icons"
@@ -16,6 +16,7 @@ const Pay = ({navigation}) => {
             paddingBottom: insets.bottom,
             paddingLeft: insets.left,
             paddingRight: insets.right,
+            flex: 1, backgroundColor: "#E5DACE"
         }}
         >
             <Header/>
@@ -40,6 +41,10 @@ const Pay = ({navigation}) => {
                         <Text>$50</Text>
                     </View>
                     <View style={styles.containerButton}>
+                        <Image
+                        source={require('../assets/iconpayfigaro.png')}
+                        style={styles.imageIcon}
+                        />
                         <TouchableOpacity
                         style={{
                             backgroundColor: "white",
@@ -63,7 +68,7 @@ const Pay = ({navigation}) => {
             <View style={styles.containerButton}>
                 <TouchableOpacity
                     style={{
-                        backgroundColor: "blue",
+                        backgroundColor: "#352F2B",
                         paddingVertical: 15,
                         borderRadius: 10,
                         marginBottom: 25,
@@ -80,6 +85,11 @@ const Pay = ({navigation}) => {
 }
 
 const styles = StyleSheet.create({
+    imageIcon:{
+        width: 70,
+        height: 70,
+        marginEnd: 10
+    },  
     containerPayScreen:{
         height: "65%",
         alignItems: "center",
@@ -90,7 +100,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         padding: 10,
-        marginTop: 10
+        marginTop: 10,
+        flexDirection: "row"
     },
     title: {
         fontWeight: "bold",
@@ -99,9 +110,11 @@ const styles = StyleSheet.create({
     containerPay:{
         padding: 20,
         justifyContent: "space-between",
-        backgroundColor: "#D9D9D9",
+        backgroundColor: "#F9EDE1",
         borderRadius: 22,
-        height: "100%"
+        height: "100%",
+        borderColor: "#5C5350",
+        borderWidth: 2
     },
     serviceItem: {
         flexDirection: "row",

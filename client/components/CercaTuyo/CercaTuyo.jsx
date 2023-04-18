@@ -3,11 +3,10 @@ import { AntDesign } from '@expo/vector-icons';
 import CardXl from "../CardXl/CardXl";
 import CardS from "../CardS/CardS";
 import { useState } from "react";
-import { Ionicons } from '@expo/vector-icons'; 
+
 
 const CercaTuyo = ({navigation}) => {
 
-    const [search, setSearch] = useState("")
     const locales = [
         {
             name: "Local uno"
@@ -25,25 +24,9 @@ const CercaTuyo = ({navigation}) => {
 
     return(
         <View style={{paddingBottom: 30}}>
-            <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>
-                <View style={styles.buscadorContainer}>
-                    <AntDesign name="search1" size={24} color="#A4A4A4" />
-                    <TextInput
-                    style={styles.textInput}
-                    onChangeText={setSearch}
-                    value={search}
-                    />
-                </View>
-                {search === "" ? "" : 
-                <TouchableOpacity style={{paddingEnd: 20}}>
-                    <Ionicons name="filter" size={30} color="#A4A4A4" />
-                </TouchableOpacity>
-                }
-            </View>
-            {search === "" ?
             <View>
                 <CardXl navigation={navigation}/>
-                <Text style={{fontWeight: "bold", fontSize: 22, marginStart: 20, marginBottom: 20}}>20 minutos o menos</Text>
+                <Text style={{fontWeight: "bold", fontSize: 22, marginStart: 20, marginBottom: 20, color: "#352F2B"}}>20 minutos o menos</Text>
                 <FlatList
                 data={locales}
                 renderItem={({item}) => <CardS data={item} navigation={navigation}/>}
@@ -52,9 +35,6 @@ const CercaTuyo = ({navigation}) => {
                 style={styles.listaContainer}
                 />
             </View>
-            :
-            ""
-            }
         </View>
     )
 }

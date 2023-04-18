@@ -51,7 +51,7 @@ const Profesional = ({navigation}) => {
             <View style={styles.containerButton}>
                 <TouchableOpacity
                     style={{
-                        backgroundColor: "blue",
+                        backgroundColor: "#352F2B",
                         paddingVertical: 15,
                         borderRadius: 10,
                         marginBottom: 25,

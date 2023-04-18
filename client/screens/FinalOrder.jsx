@@ -11,6 +11,7 @@ const FinalOrder = ({navigation}) => {
             paddingBottom: insets.bottom,
             paddingLeft: insets.left,
             paddingRight: insets.right,
+            flex: 1, backgroundColor: "#E5DACE"
         }}
         >
             <Header/>
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
         marginStart: 10
     },
     containerButton: {
-        backgroundColor: "blue",
+        backgroundColor: "#352F2B",
         paddingVertical: 15,
         borderRadius: 10,
         width: 250,

@@ -10,7 +10,7 @@ const Header = () => {
                 resizeMode="contain"
                 source={require("../../assets/logo.png")}/>
             <TouchableOpacity style={styles.avatarContainer}>
-                <AntDesign name="user" size={24} color="black" />
+                <AntDesign name="user" size={24} color="#5C5350" />
             </TouchableOpacity>
         </View>
     )
@@ -20,7 +20,9 @@ const styles = StyleSheet.create({
     header: {
         flexDirection: "row",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        backgroundColor: "#E5DACE",
+        width: "100%"
     },
     image: {
         width: 100,
@@ -32,8 +34,9 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
         borderRadius: 25,
-        backgroundColor: "#D9D9D9",
-        marginStart: 30
+        marginStart: 30,
+        borderColor: "#5C5350",
+        borderWidth: 2
     }
 })
 

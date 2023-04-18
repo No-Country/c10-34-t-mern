@@ -13,7 +13,7 @@ const Nav = () => {
     return(
         <NavigationContainer>
             <Stack.Navigator
-            initialRouteName="Inicio"
+            initialRouteName="Login"
             screenOptions={{
                 headerShown: false
             }}

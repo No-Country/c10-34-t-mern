@@ -10,7 +10,7 @@ const ProfesionalItem = ({data}) => {
             source={require('../../assets/people.jpg')}
             style={styles.avatar}
             />
-            <Text>{data.name}</Text>
+            <Text style={{color: "#BCBEC0", fontWeight: "bold"}}>{data.name}</Text>
             <Checkbox
             style={styles.checkbox}
             value={isChecked}
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-around",
         borderRadius: 30,
-        backgroundColor: "#D9D9D9",
+        backgroundColor: "#5C5350",
         padding: 15,
         marginBottom: 15
     },

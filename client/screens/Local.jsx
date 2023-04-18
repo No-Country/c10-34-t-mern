@@ -63,13 +63,13 @@ const Local = ({navigation}) => {
             }
             {isService ? 
             <View>
-                <ScrollView style={{height: "45%"}}>
+                <ScrollView style={{height: "34%", backgroundColor: "#E5DACE"}}>
                     <ServicesList/>
                 </ScrollView>
                 <View style={styles.containerButton}>
                     <TouchableOpacity
                     style={{
-                        backgroundColor: "blue",
+                        backgroundColor: "#352F2B",
                         paddingVertical: 15,
                         borderRadius: 10,
                         marginBottom: 25,
@@ -84,13 +84,13 @@ const Local = ({navigation}) => {
             </View>
             : 
             <View>
-                <ScrollView style={{height: "45%"}}>
+                <ScrollView style={{height: "34%", backgroundColor: "#E5DACE"}}>
                     {isPrice ? <Precios/> : <Reseñas/> }
                 </ScrollView>
                 <View style={styles.containerButton}>
                     <TouchableOpacity
                     style={{
-                        backgroundColor: "blue",
+                        backgroundColor: "#352F2B",
                         paddingVertical: 15,
                         borderRadius: 10,
                         marginBottom: 25,
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     },
     nav:{
         padding: 5,
-        backgroundColor: "#CCCCCC",
+        backgroundColor: "#F5F5F5",
         display: "flex",
         flexDirection: "row"
     },
@@ -178,7 +178,8 @@ const styles = StyleSheet.create({
     containerButton: {
         alignItems: "center",
         justifyContent: "center",
-        padding: 10
+        padding: 10,
+        backgroundColor: "#E5DACE"
     }
 }) 
 

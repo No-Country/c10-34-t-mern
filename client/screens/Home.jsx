@@ -16,6 +16,7 @@ const Home = ({navigation}) => {
             paddingBottom: insets.bottom,
             paddingLeft: insets.left,
             paddingRight: insets.right,
+            flex: 1, backgroundColor: "#E5DACE"
         }}
         >
             <Header/>
@@ -28,7 +29,7 @@ const Home = ({navigation}) => {
                 <TouchableOpacity style={isMap ? styles.navItemActive : styles.navItem}
                 onPress={()=>setIsMap(true)}
                 >
-                    <Text style={styles.textNav}>Ver mapa</Text>
+                    <Text style={styles.textNav}>Buscar</Text>
                 </TouchableOpacity>
             </View>
             {isMap ? <Mapa/> : <CercaTuyo navigation={navigation}/>}
@@ -39,7 +40,7 @@ const Home = ({navigation}) => {
 const styles = StyleSheet.create({
     nav:{
         padding: 5,
-        backgroundColor: "#CCCCCC",
+        backgroundColor: "white",
         display: "flex",
         flexDirection: "row"
     },
