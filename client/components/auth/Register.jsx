@@ -38,7 +38,7 @@ const Register = ({ navigation }) => {
             width: 300,
             height: 100,
           }}
-          source={require("../assets/logo.png")}
+          source={require("../../assets/logo.png")}
         />
       </View>
       <View
