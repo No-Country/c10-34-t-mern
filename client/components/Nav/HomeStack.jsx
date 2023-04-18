@@ -1,8 +1,15 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Home from "../../screens/Home";
+import Consejos from "../../screens/Consejos";
+import Listas from "../../screens/Listas";
+import Menu from "../../screens/Menu";
+import { Feather } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import StoreStack from "./StoreStack";
-import UserInfo from "../../screens/UserInfo"
-import { AntDesign } from '@expo/vector-icons';
+import UserInfo from "../../screens/UserInfo";
+import { AntDesign } from "@expo/vector-icons";
 
 const HomeStack = () => {
     const Tab = createBottomTabNavigator()
