@@ -1,4 +1,4 @@
-import { createBooking, getDetailBooking, getAllBookings, updateOneBooking, deleteOneBooking } from "../services/bookings.service.js"
+import { createBooking, getDetailBooking, getAllBookings, getBookingsListByUser, updateOneBooking, deleteOneBooking } from "../services/bookings.service.js"
 const registerBooking = async(req, res, next) => {
     try {
         const { body } = req
@@ -25,6 +25,15 @@ const getBooking = async(req, res, next) => {
         next(error)
     }
 }
+const getBookingsByUser = async(req, res, next) => {
+    try {
+        const { user_id } = req.params
+        const bookings = await getBookingsListByUser(user_id)
+        res.json({ result: bookings })
+    } catch (error) {
+        next(error)
+    }
+}
 const updateBooking = async(req, res, next) => {
     try {
         const { id } = req.params
@@ -45,4 +54,4 @@ const deleteBooking = async(req, res, next) => {
     }
 }
 
-export { registerBooking, getBookings, getBooking, updateBooking, deleteBooking }
+export { registerBooking, getBookings, getBooking, getBookingsByUser, updateBooking, deleteBooking }
