@@ -11,9 +11,14 @@ import {
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import { Controller, useForm } from "react-hook-form";
 import axios from "axios";
+import { useState } from "react";
 
-import * as SecureStore from "expo-secure-store";
 const Register = ({ navigation }) => {
+  // const [isFocused, setIsFocused] = useState(false);
+
+  // const handleFocus = () => setIsFocused(true);
+  // const handleBlur = () => setIsFocused(false);
+
   const { control, handleSubmit, errors } = useForm();
 
   const onSubmit = (data) => {
@@ -27,39 +32,78 @@ const Register = ({ navigation }) => {
       .catch((error) => console.log(error.JSON()));
   };
   return (
-    <SafeAreaView>
+    <SafeAreaView
+      style={{
+        backgroundColor: "#3C3630",
+        height: "100%",
+      }}
+    >
       <View
         style={{
-          justifyContent: "center",
-          alignItems: "center",
+          paddingLeft: "20%",
+          paddingRight: "20%",
+
           marginTop: 80,
+          width: 400,
+          height: 120,
+          marginTop: 120,
+          position: "relative",
         }}
       >
         <Image
+          resizeMode="contain"
           style={{
-            width: 300,
+            width: 60,
             height: 100,
           }}
-          source={require("../../assets/logo.png")}
+          source={require("../../assets/Logooriginal4.png")}
+        />
+        <Image
+          resizeMode="contain"
+          style={{
+            width: 180,
+            height: 80,
+            position: "absolute",
+            top: 0,
+            right: 70,
+          }}
+          source={require("../../assets/Figaro-1.png")}
+        />
+        <Image
+          resizeMode="contain"
+          style={{
+            width: 180,
+            height: 90,
+            position: "absolute",
+            top: 40,
+            right: 70,
+          }}
+          source={require("../../assets/look.png")}
         />
       </View>
+
       <View
         style={{
-          paddingHorizontal: 30,
-          paddingTop: 20,
+          height: 36,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#B3B6B8",
+          alignItems: "flex-start",
+          paddingLeft: 32,
         }}
       >
         <Text
           style={{
-            fontSize: 30,
-            color: "blue",
-            fontWeight: 700,
-            textAlign: "center",
+            color: "#352F2B",
+            fontWeight: 600,
+            fontSize: 20,
+            textAlign: "left",
           }}
         >
-          Crear nuevo Usuario
+          Alta de usuario
         </Text>
       </View>
+
       <View
         style={{
           marginVertical: 20,
@@ -72,16 +116,21 @@ const Register = ({ navigation }) => {
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
-              onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              placeholder="name"
+              placeholder="Ingresa tu nombre"
               placeholderTextColor={Colors.darkText}
+              // onFocus={handleFocus}
+              onBlur={onBlur}
               style={{
                 fontSize: 18,
-                padding: 15,
+
+                padding: 7,
+                paddingLeft: 20,
                 backgroundColor: "white",
-                borderRadius: 10,
+                borderRadius: 50,
+                borderColor: "purple",
+                borderWidth: 2,
               }}
             />
           )}
@@ -93,16 +142,20 @@ const Register = ({ navigation }) => {
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
-              onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              placeholder="lastName"
+              placeholder="Ingresa tu Apellido"
               placeholderTextColor={Colors.darkText}
+              onBlur={onBlur}
               style={{
                 fontSize: 18,
-                padding: 15,
+
+                padding: 7,
+                paddingLeft: 20,
                 backgroundColor: "white",
-                borderRadius: 10,
+                borderRadius: 50,
+                borderColor: "purple",
+                borderWidth: 2,
                 marginTop: 15,
               }}
             />
@@ -115,16 +168,20 @@ const Register = ({ navigation }) => {
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
-              onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              placeholder="email"
+              placeholder="Ingresa tu correo"
               placeholderTextColor={Colors.darkText}
+              onBlur={onBlur}
               style={{
                 fontSize: 18,
-                padding: 15,
+
+                padding: 7,
+                paddingLeft: 20,
                 backgroundColor: "white",
-                borderRadius: 10,
+                borderRadius: 50,
+                borderColor: "purple",
+                borderWidth: 2,
                 marginTop: 15,
               }}
             />
@@ -137,16 +194,20 @@ const Register = ({ navigation }) => {
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
-              onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              placeholder="dateOfBirth"
+              placeholder="Ingresa tu fecha e nacimiento"
               placeholderTextColor={Colors.darkText}
+              onBlur={onBlur}
               style={{
                 fontSize: 18,
-                padding: 15,
+
+                padding: 7,
+                paddingLeft: 20,
                 backgroundColor: "white",
-                borderRadius: 10,
+                borderRadius: 50,
+                borderColor: "purple",
+                borderWidth: 2,
                 marginTop: 15,
               }}
             />
@@ -159,16 +220,20 @@ const Register = ({ navigation }) => {
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
-              onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              placeholder="password"
+              placeholder="Ingresa tu contraseña"
               placeholderTextColor={Colors.darkText}
+              onBlur={onBlur}
               style={{
                 fontSize: 18,
-                padding: 15,
+
+                padding: 7,
+                paddingLeft: 20,
                 backgroundColor: "white",
-                borderRadius: 10,
+                borderRadius: 50,
+                borderColor: "purple",
+                borderWidth: 2,
                 marginTop: 15,
               }}
             />
@@ -185,8 +250,8 @@ const Register = ({ navigation }) => {
           title="Submit"
           onPress={handleSubmit(onSubmit)}
           style={{
-            backgroundColor: "blue",
-            paddingVertical: 15,
+            backgroundColor: "#BCBEC0",
+            paddingVertical: 12,
             width: "100%",
             borderRadius: 10,
           }}
@@ -215,6 +280,7 @@ const Register = ({ navigation }) => {
           <Text
             style={{
               fontWeight: 600,
+              color: "#E5DACE",
             }}
           >
             Ya tengo una cuenta
