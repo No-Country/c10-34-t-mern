@@ -48,20 +48,68 @@ const Login = ({ navigation }) => {
   const get2 = SecureStore.getItemAsync("token");
   console.log(get2);
   return (
-    <SafeAreaView>
+    <SafeAreaView
+      style={{
+        backgroundColor: "#3C3630",
+        height: "100%",
+      }}
+    >
       <View
         style={{
-          justifyContent: "center",
-          alignItems: "center",
+          paddingLeft: "20%",
+          paddingRight: "20%",
+
           marginTop: 80,
+          width: 400,
+          height: 120,
+          marginTop: 120,
+          position: "relative",
         }}
       >
         <Image
+          resizeMode="contain"
           style={{
-            width: 300,
+            width: 60,
             height: 100,
           }}
-          source={require("../assets/logo.png")}
+          source={require("../assets/Logooriginal4.png")}
+        />
+        <Image
+          resizeMode="contain"
+          style={{
+            width: 180,
+            height: 80,
+            position: "absolute",
+            top: 0,
+            right: 70,
+          }}
+          source={require("../assets/Figaro-1.png")}
+        />
+        <Image
+          resizeMode="contain"
+          style={{
+            width: 180,
+            height: 90,
+            position: "absolute",
+            top: 40,
+            right: 70,
+          }}
+          source={require("../assets/look.png")}
+        />
+      </View>
+      <View
+        style={{
+          height: 36,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Image
+          resizeMode="contain"
+          style={{
+            height: 90,
+          }}
+          source={require("../assets/Rectangle348.png")}
         />
       </View>
       <View
@@ -69,18 +117,7 @@ const Login = ({ navigation }) => {
           paddingHorizontal: 30,
           paddingTop: 50,
         }}
-      >
-        <Text
-          style={{
-            fontSize: 30,
-            color: "blue",
-            fontWeight: 700,
-            textAlign: "center",
-          }}
-        >
-          Bienvenido se parte de nuestra comunidad
-        </Text>
-      </View>
+      ></View>
       <View
         style={{
           marginVertical: 20,
@@ -192,7 +229,7 @@ const Login = ({ navigation }) => {
               fontWeight: 600,
               paddingTop: 10,
               textAlign: "right",
-              color: "blue",
+              color: "white",
             }}
           >
             ¿ Olvidaste tu constraseña?
@@ -207,7 +244,7 @@ const Login = ({ navigation }) => {
       >
         <TouchableOpacity
           style={{
-            backgroundColor: "blue",
+            backgroundColor: "#5C5350",
             paddingVertical: 15,
             width: "100%",
             borderRadius: 10,
@@ -216,7 +253,7 @@ const Login = ({ navigation }) => {
         >
           <Text
             style={{
-              color: "white",
+              color: "#E5DACE",
               textAlign: "center",
               fontSize: 20,
               fontWeight: 600,
@@ -231,29 +268,7 @@ const Login = ({ navigation }) => {
         style={{
           paddingHorizontal: 30,
         }}
-      >
-        <TouchableOpacity
-          style={{
-            backgroundColor: "blue",
-            paddingVertical: 15,
-            width: "100%",
-            borderRadius: 10,
-            marginTop: 10,
-          }}
-          onPress={handleSubmit(onLogOut)}
-        >
-          <Text
-            style={{
-              color: "white",
-              textAlign: "center",
-              fontSize: 20,
-              fontWeight: 600,
-            }}
-          >
-            Log out
-          </Text>
-        </TouchableOpacity>
-      </View>
+      ></View>
 
       <View
         style={{
@@ -267,6 +282,7 @@ const Login = ({ navigation }) => {
           <Text
             style={{
               fontWeight: 600,
+              color: "#E5DACE",
             }}
           >
             Crear nuevo usuario
@@ -275,6 +291,7 @@ const Login = ({ navigation }) => {
         <TouchableOpacity onPress={() => navigation.navigate("Register")}>
           <Text
             style={{
+              color: "#E5DACE",
               fontWeight: 600,
             }}
           >
