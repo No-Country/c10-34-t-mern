@@ -22,26 +22,31 @@ const Login = ({ navigation }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = (data) => {
-    // console.log(data);
+    console.log(data);
 
-    const url = "https://paracuando-team1.academlo.tech/api/v1/auth/login";
+    const url = "https://barber-nocountry.onrender.com/api/v1/auth/login";
     axios
       .post(url, data)
       .then((response) => {
-        console.log(response.data);
-        SecureStore.setItemAsync("token", response.data.token[0].public);
-        alert("Has iniciado sesion");
+        console.log(response.data.tokenGenerated);
+        SecureStore.setItemAsync("token", response.data.tokenGenerated);
+        navigation.navigate("Inicio");
       })
       .catch((error) => console.log(error.JSON()));
   };
 
-  const onLogOut = () => {
-    SecureStore.deleteItemAsync("token");
+  const onLogOut = async () => {
+    SecureStore.deleteItemAsync("token").then((result) =>
+      console.log("log out")
+    );
+    // await SecureStore.setItemAsync("token", "holasoyuntoken");
   };
 
   const handleShowPassord = () => {
     setShowPassword(!showPassword);
   };
+  const get2 = SecureStore.getItemAsync("token");
+  console.log(get2);
   return (
     <SafeAreaView>
       <View
@@ -108,8 +113,8 @@ const Login = ({ navigation }) => {
           <AntDesign
             style={{
               position: "absolute",
-              top: "50%",
-              transform: "translateY(-12px)",
+              top: "30%",
+
               left: 10,
             }}
             name="mail"
@@ -145,8 +150,8 @@ const Login = ({ navigation }) => {
           <AntDesign
             style={{
               position: "absolute",
-              top: "50%",
-              transform: "translateY(-5px)",
+              top: "45%",
+
               left: 10,
             }}
             name="lock"
@@ -158,7 +163,7 @@ const Login = ({ navigation }) => {
               style={{
                 position: "absolute",
                 top: "50%",
-                transform: "translateY(-5px)",
+
                 right: 10,
               }}
               name="eye-off"
@@ -171,7 +176,7 @@ const Login = ({ navigation }) => {
               style={{
                 position: "absolute",
                 top: "50%",
-                transform: "translateY(-5px)",
+
                 right: 10,
               }}
               name="eyeo"
@@ -233,6 +238,7 @@ const Login = ({ navigation }) => {
             paddingVertical: 15,
             width: "100%",
             borderRadius: 10,
+            marginTop: 10,
           }}
           onPress={handleSubmit(onLogOut)}
         >

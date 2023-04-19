@@ -12,10 +12,12 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 import { Controller, useForm } from "react-hook-form";
 import axios from "axios";
 
+import * as SecureStore from "expo-secure-store";
 const Register = ({ navigation }) => {
   const { control, handleSubmit, errors } = useForm();
+
   const onSubmit = (data) => {
-    const url = "https://paracuando-team1.academlo.tech/api/v1/auth/sign-up";
+    const url = "https://barber-nocountry.onrender.com/api/v1/auth/register";
     axios
       .post(url, data)
       .then((response) => {
@@ -65,7 +67,7 @@ const Register = ({ navigation }) => {
         }}
       >
         <Controller
-          name="firstName"
+          name="name"
           rules={{ required: true }}
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
@@ -73,7 +75,7 @@ const Register = ({ navigation }) => {
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              placeholder="firstName"
+              placeholder="name"
               placeholderTextColor={Colors.darkText}
               style={{
                 fontSize: 18,
@@ -117,6 +119,28 @@ const Register = ({ navigation }) => {
               onChangeText={onChange}
               value={value}
               placeholder="email"
+              placeholderTextColor={Colors.darkText}
+              style={{
+                fontSize: 18,
+                padding: 15,
+                backgroundColor: "white",
+                borderRadius: 10,
+                marginTop: 15,
+              }}
+            />
+          )}
+        />
+
+        <Controller
+          name="dateOfBirth"
+          rules={{ required: true }}
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              placeholder="dateOfBirth"
               placeholderTextColor={Colors.darkText}
               style={{
                 fontSize: 18,
