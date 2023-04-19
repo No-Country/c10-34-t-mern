@@ -3,13 +3,17 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import * as SecureStore from "expo-secure-store";
+import { useDispatch, useSelector } from "react-redux";
+import { setToken } from "../redux/tokenSlice/tokenSlice";
 
 const UserInfo = ({ navigation }) => {
+  const userInfoGlobal = useSelector((state) => state.infoReducer.info);
+  const dispatch = useDispatch();
+
   const insets = useSafeAreaInsets();
   const handleLogOut = () => {
-    SecureStore.deleteItemAsync("token").then((result) =>
-      console.log("log out")
-    );
+    dispatch(setToken(""));
+    console.log("Log out");
     navigation.navigate("Login");
   };
 
@@ -27,7 +31,7 @@ const UserInfo = ({ navigation }) => {
       }}
     >
       <Text style={{ color: "#BCBEC0", fontSize: 26, fontWeight: "bold" }}>
-        User name
+        {userInfoGlobal.name}
       </Text>
       <View style={styles.avatarContainer}>
         <AntDesign name="user" size={44} color="#BCBEC0" />

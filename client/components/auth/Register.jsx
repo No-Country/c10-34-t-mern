@@ -11,14 +11,9 @@ import {
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import { Controller, useForm } from "react-hook-form";
 import axios from "axios";
-import { useState } from "react";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 const Register = ({ navigation }) => {
-  // const [isFocused, setIsFocused] = useState(false);
-
-  // const handleFocus = () => setIsFocused(true);
-  // const handleBlur = () => setIsFocused(false);
-
   const { control, handleSubmit, errors } = useForm();
 
   const onSubmit = (data) => {
@@ -32,11 +27,14 @@ const Register = ({ navigation }) => {
       .catch((error) => console.log(error.JSON()));
   };
   return (
-    <SafeAreaView
+    <KeyboardAwareScrollView
+      resetScrollToCoords={{ x: 0, y: 0 }}
+      contentContainerStyle={styles.container}
       style={{
-        backgroundColor: "#3C3630",
         height: "100%",
+        backgroundColor: "#3C3630",
       }}
+      scrollEnabled
     >
       <View
         style={{
@@ -196,7 +194,7 @@ const Register = ({ navigation }) => {
             <TextInput
               onChangeText={onChange}
               value={value}
-              placeholder="Ingresa tu fecha e nacimiento"
+              placeholder="Ingresa tu fecha de nacimiento"
               placeholderTextColor={Colors.darkText}
               onBlur={onBlur}
               style={{
@@ -287,7 +285,7 @@ const Register = ({ navigation }) => {
           </Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </KeyboardAwareScrollView>
   );
 };
 
