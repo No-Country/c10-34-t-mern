@@ -39,7 +39,6 @@ const Login = ({ navigation }) => {
       .post(url, data)
       .then((response) => {
         dispatch(setToken(response.data.tokenGenerated));
-        navigation.navigate("Inicio");
       })
       .catch((error) => console.log(error.JSON()));
 
@@ -56,6 +55,7 @@ const Login = ({ navigation }) => {
       .get(urlInfo, access)
       .then((response) => {
         dispatch(setInfoUser(response.data));
+        navigation.navigate("Inicio");
       })
       .catch((error) => console.log(error.JSON()));
   };
