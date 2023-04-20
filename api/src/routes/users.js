@@ -1,15 +1,17 @@
 import { Router } from "express";
 import {
-  getUsers,
-  getUser,
-  updateUser,
-  deleteUser,
+    getUsers,
+    getUser,
+    updateUser,
+    deleteUser,
+    getBarbers,
 } from "../controllers/users.controller.js";
 import checkAuth from "../middleware/checkAuth.js";
 import checkRol from "../middleware/checkRol.js";
 const router = Router();
 
 router.get("/", checkAuth, checkRol(["admin"]), getUsers);
+router.get("/barbers", checkAuth, checkRol(["admin", "user"]), getBarbers);
 router.get("/:id", checkAuth, checkRol(["admin"]), getUser);
 router.patch("/:id", checkAuth, checkRol(["admin"]), updateUser);
 router.delete("/:id", checkAuth, checkRol(["admin"]), deleteUser);
