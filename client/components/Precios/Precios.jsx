@@ -1,29 +1,9 @@
 import { Text, View, FlatList, StyleSheet } from "react-native";
+import { useSelector } from "react-redux";
+
 
 const Precios = () => {
-
-    const services = [
-        {
-            name: "Corte de cabello",
-            price: 350
-        },
-        {
-            name: "Aceo de barba",
-            price: 250
-        },
-        {
-            name: "Arreglo de barba",
-            price: 200
-        },
-        {
-            name: "Lavado Sir Fausto",
-            price: 70
-        },
-        {
-            name: "Lavado de barba Sir Fausto",
-            price: 70
-        }
-    ]
+    const services = useSelector((state)=> state.dataAppReducer.services)
 
     return(
         <View style={styles.priceContainer}>
@@ -49,7 +29,7 @@ const styles = StyleSheet.create({
     priceContainer: {
         padding: 20,
         justifyContent: "space-between",
-        height: "90%"
+        height: "100%",
     },
     priceItem: {
         flexDirection: "row",

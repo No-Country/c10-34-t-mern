@@ -9,16 +9,16 @@ const CercaTuyo = ({navigation}) => {
 
     const locales = [
         {
-            name: "Local uno"
+            name: "Armando",
+            img: "../../assets/local1.png"
         },
         {
-            name: "Local dos"
+            name: "Artime",
+            img: "../../assets/local2.png"
         },
         {
-            name: "Local tres"
-        },
-        {
-            name: "Local cuatro"
+            name: "Argentos",
+            img: "../../assets/local3.png"
         }
     ]
 

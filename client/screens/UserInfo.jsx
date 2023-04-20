@@ -5,6 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import * as SecureStore from "expo-secure-store";
 import { useDispatch, useSelector } from "react-redux";
 import { setToken } from "../redux/tokenSlice/tokenSlice";
+import { useEffect } from "react";
 
 const UserInfo = ({ navigation }) => {
   const userInfoGlobal = useSelector((state) => state.infoReducer.info);

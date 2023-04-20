@@ -1,13 +1,15 @@
-import { View, Text, TouchableOpacity, StyleSheet, Modal, Image } from "react-native"
+import { View, Text, TouchableOpacity, StyleSheet, Modal, Image, FlatList, ScrollView } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import Header from "../components/Header/Header"
 import { AntDesign } from "@expo/vector-icons"
 import { useState } from "react"
 import ModalPay from "../components/ModalPay/ModalPay"
+import { useSelector } from "react-redux"
 
 const Pay = ({navigation}) => {
     const insets = useSafeAreaInsets()
     const [modalVisible, setModalVisible] = useState(false);
+    const payInfo = useSelector((state)=> state.order)
 
     return(
         <View
@@ -25,17 +27,18 @@ const Pay = ({navigation}) => {
             </View>
             <View style={styles.containerPayScreen}>
                 <View style={styles.containerPay}>
-                    <Text>Reservás con Erling Haaland para el jueves 17 de abril a las 11:30 a.m. los siguientes servicios:</Text>
-                    <View style={styles.servicesContainer}>
-                        <View style={styles.serviceItem}>
-                            <Text>Corte de cabello:</Text>
-                            <Text>$350</Text>
-                        </View>
-                        <View style={styles.serviceItem}>
-                            <Text>Aceo de barba:</Text>
-                            <Text>$250</Text>
-                        </View>
-                    </View>
+                    <Text>Reservás con {payInfo.orderInfo.barberName[0]} para el {payInfo.orderInfo.dateName} los siguientes servicios:</Text>
+                    <ScrollView style={styles.servicesContainer}>
+                        <FlatList
+                        data={payInfo.orderInfo.services}
+                        renderItem={({item}) => (
+                            <View style={styles.serviceItem}>
+                                <Text>{item.name}:</Text>
+                                <Text>${item.price}</Text>
+                            </View>
+                        )}
+                        />
+                    </ScrollView>
                     <View style={styles.serviceItem}>
                         <Text>Reserva:</Text>
                         <Text>$50</Text>
@@ -125,6 +128,9 @@ const styles = StyleSheet.create({
     titleContainer: {
         padding: 10,
         alignItems: "center"
+    },
+    servicesContainer:{
+        height: 100
     }
 })
 

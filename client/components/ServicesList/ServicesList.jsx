@@ -1,25 +1,9 @@
 import { FlatList, StyleSheet, View } from "react-native"
 import Service from "../ServiceItem/Service";
+import { useSelector } from "react-redux";
 
 const ServicesList = () => {
-
-    const services = [
-        {
-            name: "Corte de cabello"
-        },
-        {
-            name: "Aceo de barba"
-        },
-        {
-            name: "Arreglo de barba"
-        },
-        {
-            name: "Lavado Sir Fausto"
-        },
-        {
-            name: "Lavado de barba Sir Fausto",
-        }
-    ]
+    const services = useSelector((state)=> state.dataAppReducer.services)
 
     return(
         <View style={styles.servicesContainer} >

@@ -22,6 +22,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { useDispatch, useSelector } from "react-redux";
 import { setInfoUser } from "../redux/infoUserSlice/infoUserSlice";
 import { setToken } from "../redux/tokenSlice/tokenSlice";
+import { setUserId } from "../redux/orderSlice/orderSlice";
 
 const Login = ({ navigation }) => {
   const { control, handleSubmit, errors } = useForm();
@@ -55,6 +56,7 @@ const Login = ({ navigation }) => {
       .get(urlInfo, access)
       .then((response) => {
         dispatch(setInfoUser(response.data));
+        dispatch(setUserId(response.data._id))
         navigation.navigate("Inicio");
       })
       .catch((error) => console.log(error.JSON()));

@@ -7,10 +7,12 @@ import Precios from "../components/Precios/Precios"
 import Reseñas from "../components/Reseñas/Reseñas"
 import ServicesList from "../components/ServicesList/ServicesList"
 
-const Local = ({navigation}) => {
+const Local = ({route, navigation}) => {
     const insets = useSafeAreaInsets()
     const [isPrice, setIsPrice] = useState(true)
     const [isService, setIsService] = useState(false)
+    const {local} = route.params;
+
     return(
         <View
         style={{
@@ -18,10 +20,11 @@ const Local = ({navigation}) => {
             paddingBottom: insets.bottom,
             paddingLeft: insets.left,
             paddingRight: insets.right,
+            flex:1, height: "100%"
         }}
         >
             <Header/>
-            <ImageBackground style={{height: 150, position: "relative"}} source={require('../assets/imagen.png')} resizeMode="cover">
+            <ImageBackground style={{height: 150, position: "relative"}} source={require('../assets/local1.png')} resizeMode="cover">
                     <TouchableOpacity style={styles.iconBack} onPress={() => navigation.navigate('Locales')}>
                         <Ionicons name="arrow-back" size={34} color="#888888" />
                     </TouchableOpacity>
@@ -35,7 +38,7 @@ const Local = ({navigation}) => {
                     </View>
             </ImageBackground>
             <View style={styles.localNameContainer} >
-                <Text style={styles.localName}>Nombre de local</Text>
+                <Text style={styles.localName}>{local.name}</Text>
                 <View style={styles.containerMinutos}>
                     <Entypo name="time-slot" size={24} color="#CCCCCC" />
                     <Text style={styles.minutos}>10 min</Text>
@@ -62,7 +65,7 @@ const Local = ({navigation}) => {
             </View>
             }
             {isService ? 
-            <View>
+            <View style={{flex:1, height: "100%"}}>
                 <ScrollView style={{height: "34%", backgroundColor: "#E5DACE"}}>
                     <ServicesList/>
                 </ScrollView>
@@ -84,7 +87,7 @@ const Local = ({navigation}) => {
             </View>
             : 
             <View>
-                <ScrollView style={{height: "34%", backgroundColor: "#E5DACE"}}>
+                <ScrollView style={{height: "45%", backgroundColor: "#E5DACE"}}>
                     {isPrice ? <Precios/> : <Reseñas/> }
                 </ScrollView>
                 <View style={styles.containerButton}>

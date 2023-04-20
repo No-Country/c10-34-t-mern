@@ -1,17 +1,23 @@
 import {View, Text, StyleSheet} from "react-native"
 import { useState } from "react"
 import Checkbox from 'expo-checkbox';
+import { setServices, setServicesName } from "../../redux/orderSlice/orderSlice";
+import { useDispatch } from "react-redux";
 
 const Service = ({data}) => {
     const [isChecked, setChecked] = useState(false);
-
+    const dispatch = useDispatch()
     return(
         <View style={styles.serviceItem} >
             <Text>{data.name}</Text>
             <Checkbox
             style={styles.checkbox}
             value={isChecked}
-            onValueChange={setChecked}
+            onValueChange={()=>{
+                setChecked(true)
+                dispatch(setServices(data._id))
+                dispatch(setServicesName(data))
+            }}
             color={isChecked ? '#4630EB' : undefined}
             />
         </View>

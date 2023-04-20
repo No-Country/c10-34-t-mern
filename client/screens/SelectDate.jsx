@@ -5,13 +5,16 @@ import { useState } from "react"
 import { AntDesign } from "@expo/vector-icons";
 import Header from "../components/Header/Header";
 import {Picker} from '@react-native-picker/picker';
+import { useDispatch } from "react-redux";
+import { setDateName } from "../redux/orderSlice/orderSlice";
 
 const SelectDate = ({navigation}) => {
     const insets = useSafeAreaInsets()
     const [datePicker, setDatePicker] = useState(true);
     const [date, setDate] = useState(new Date());
     const [selectedValue, setSelectedLanguage] = useState();
-    
+    const dispatch = useDispatch()
+
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate;
         setDate(currentDate);
@@ -81,7 +84,10 @@ const SelectDate = ({navigation}) => {
                         width: 250,
                         alignItems: "center", 
                     }}
-                    onPress={() => navigation.navigate("Profesional")}
+                    onPress={() => {
+                        dispatch(setDateName(`${date.toLocaleDateString()} a las ${selectedValue}`))
+                        navigation.navigate("Profesional")
+                    }}
                 >
                         <AntDesign name="arrowright" size={24} color="white" />
                 </TouchableOpacity> 

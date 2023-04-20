@@ -19,10 +19,10 @@ const ModalPay = ({modalState, setModalState}) => {
                                 <FontAwesome name="cc-visa" size={24} color="black" />
                             </View>
                             <View style={styles.cardItem}>
-                                <FontAwesome name="cc-visa" size={24} color="black" />
+                                <FontAwesome name="cc-mastercard" size={24} color="black" />
                             </View>
                             <View style={styles.cardItem}>
-                                <FontAwesome name="cc-visa" size={24} color="black" />
+                                <FontAwesome name="cc-amex" size={24} color="black" />
                             </View>
                         </View>
                         <TextInput

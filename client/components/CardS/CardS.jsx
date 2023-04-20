@@ -4,8 +4,10 @@ import { LinearGradient } from "expo-linear-gradient";
 const CardS = ({data, navigation}) => {
 
     return(
-        <TouchableOpacity onPress={() => navigation.navigate('Local')}>
-            <ImageBackground style={styles.imagenContainer} source={require('../../assets/imagen.png')} resizeMode="cover">
+        <TouchableOpacity onPress={() => navigation.navigate('Local', {
+            local: data
+        })}>
+            <ImageBackground style={styles.imagenContainer} source={require("../../assets/local1.png")} resizeMode="cover">
                 <LinearGradient style={styles.containerGradiente} colors={["transparent", "#000000"]}>
                     <Text style={styles.nombreLocal}>{data.name}</Text>
                 </LinearGradient>

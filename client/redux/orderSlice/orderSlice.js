@@ -5,8 +5,12 @@ const initialState = {
         user: "",
         barber: "",
         date: "",
-        service: [],
-        product: ""
+        service: []
+    },
+    orderInfo:{
+        barberName: [],
+        dateName: "",
+        services: [],
     }
 }
 
@@ -22,10 +26,22 @@ export const orderSlice = createSlice({
         },
         setServices: (state, payload) => {
             state.order.service.push(payload.payload)
+        },
+        setUserId: (state, payload) => {
+            state.order.user = payload.payload
+        },
+        setBarberName: (state, payload) => {
+            state.orderInfo.barberName.push(payload.payload)
+        },
+        setDateName: (state, payload) => {
+            state.orderInfo.dateName = payload.payload
+        },
+        setServicesName: (state, payload) => {
+            state.orderInfo.services.push(payload.payload)
         }
     }
 })
 
-export const {setOrder, setDate, setServices} = orderSlice.actions;
+export const {setOrder, setDate, setServices, setUserId, setBarberName, setDateName, setServicesName} = orderSlice.actions;
 
 export default orderSlice.reducer;

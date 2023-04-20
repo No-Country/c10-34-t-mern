@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-    tokenInfo:""
+    tokenInfo:"token"
 }
 const tokenSlice = createSlice({
     name:"token",

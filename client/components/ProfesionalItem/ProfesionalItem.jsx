@@ -1,9 +1,12 @@
 import { View, Text, Image, StyleSheet } from "react-native"
 import Checkbox from 'expo-checkbox';
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setBarberName } from "../../redux/orderSlice/orderSlice";
+
 const ProfesionalItem = ({data}) => {
     const [isChecked, setChecked] = useState(false);
-
+    const dispatch = useDispatch()
     return(
         <View style={styles.profesionalContainer}>
             <Image
@@ -14,7 +17,10 @@ const ProfesionalItem = ({data}) => {
             <Checkbox
             style={styles.checkbox}
             value={isChecked}
-            onValueChange={setChecked}
+            onValueChange={()=>{
+                setChecked(true)
+                dispatch(setBarberName(data.name))
+            }}
             color={isChecked ? '#4630EB' : undefined}
             />
         </View>
