@@ -38,10 +38,16 @@ export const orderSlice = createSlice({
         },
         setServicesName: (state, payload) => {
             state.orderInfo.services.push(payload.payload)
+        },
+        setServicesEmpty: (state, payload) => {
+            state.orderInfo.services = []
+        },
+        setBarberNameEmpty: (state, payload) => {
+            state.orderInfo.barberName = []
         }
     }
 })
 
-export const {setOrder, setDate, setServices, setUserId, setBarberName, setDateName, setServicesName} = orderSlice.actions;
+export const {setOrder, setDate, setServices, setUserId, setBarberName, setDateName, setServicesName, setServicesEmpty, setBarberNameEmpty} = orderSlice.actions;
 
 export default orderSlice.reducer;

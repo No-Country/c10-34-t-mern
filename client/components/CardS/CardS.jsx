@@ -1,12 +1,20 @@
 import { ImageBackground, Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { useDispatch } from "react-redux";
+import { setBarberName, setBarberNameEmpty, setServicesEmpty } from "../../redux/orderSlice/orderSlice";
 
 const CardS = ({data, navigation}) => {
-
+    const dispatch = useDispatch()
     return(
-        <TouchableOpacity onPress={() => navigation.navigate('Local', {
+        <TouchableOpacity onPress={() => {
+            navigation.navigate('Local', {
             local: data
-        })}>
+        })
+        dispatch(setDateName(""))
+        dispatch(setServicesEmpty())
+        dispatch(setBarberNameEmpty())
+        }
+        }>
             <ImageBackground style={styles.imagenContainer} source={require("../../assets/local1.png")} resizeMode="cover">
                 <LinearGradient style={styles.containerGradiente} colors={["transparent", "#000000"]}>
                     <Text style={styles.nombreLocal}>{data.name}</Text>

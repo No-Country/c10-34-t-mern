@@ -6,19 +6,20 @@ const ServicesList = () => {
     const services = useSelector((state)=> state.dataAppReducer.services)
 
     return(
-        <View style={styles.servicesContainer} >
             <FlatList
+            style={styles.servicesContainer}
             data={services}
             renderItem={({item}) => <Service data={item}/>}
             />
-        </View>
     )
 }
 
 const styles = StyleSheet.create({
     servicesContainer: {
         paddingHorizontal: 30,
-        paddingVertical: 10
+        paddingVertical: 10,
+        height: "34%",
+        backgroundColor: "#E5DACE"
     }
 })
 

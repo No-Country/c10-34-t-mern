@@ -1,7 +1,7 @@
 import { Modal, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
-const ModalPay = ({modalState, setModalState}) => {
+const ModalPay = ({modalState, setModalState, setIsPay}) => {
 
     return(
         <View style={styles.centeredView}>
@@ -57,7 +57,10 @@ const ModalPay = ({modalState, setModalState}) => {
                                     width: 250,
                                     alignItems: "center", 
                                 }}
-                                onPress={() => setModalState(!modalState)}
+                                onPress={() => {
+                                    setModalState(!modalState)
+                                    setIsPay(true)
+                                }}
                             >
                                     <Text>Registrar tarjeta</Text>
                             </TouchableOpacity> 

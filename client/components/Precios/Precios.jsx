@@ -6,8 +6,8 @@ const Precios = () => {
     const services = useSelector((state)=> state.dataAppReducer.services)
 
     return(
-        <View style={styles.priceContainer}>
             <FlatList
+            style={styles.priceContainer}
             data={services}
             renderItem={({item})=> {
                 return(
@@ -19,17 +19,14 @@ const Precios = () => {
             }}
             keyExtractor={item=> item.name}
             />
-            <Text style={{marginVertical: 20}}>Horarios de Lunes a Sábados de 9 a 20 horas.</Text>
-            <Text>TRADICIÓN ITALIANA CON MAS DE 100 AÑOS DE EXPERIENCIA EN EL PAIS</Text>
-        </View>
+            
     )
 }
 
 const styles = StyleSheet.create({
     priceContainer: {
-        padding: 20,
-        justifyContent: "space-between",
-        height: "100%",
+        padding: 20, backgroundColor: "#E5DACE",
+        height: 150
     },
     priceItem: {
         flexDirection: "row",

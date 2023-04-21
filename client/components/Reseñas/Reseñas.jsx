@@ -15,8 +15,8 @@ const Reseñas = () => {
     ];
 
     return(
-        <View style={styles.reviewContainer}>
-            <FlatList
+        <FlatList
+            style={styles.reviewContainer}
             data={reviews}
             renderItem={({item}) => {
                 return(
@@ -30,7 +30,6 @@ const Reseñas = () => {
                 )
             }}
             />
-        </View>
     )
 }
 
@@ -42,7 +41,8 @@ const styles = StyleSheet.create({
     },
     reviewContainer: {
         padding: 10,
-        height: "100%"
+        height: "100%",
+        backgroundColor: "#E5DACE"
     },
     avatar: {
         width: 50,

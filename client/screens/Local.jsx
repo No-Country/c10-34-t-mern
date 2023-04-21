@@ -66,9 +66,7 @@ const Local = ({route, navigation}) => {
             }
             {isService ? 
             <View style={{flex:1, height: "100%"}}>
-                <ScrollView style={{height: "34%", backgroundColor: "#E5DACE"}}>
-                    <ServicesList/>
-                </ScrollView>
+                <ServicesList/>
                 <View style={styles.containerButton}>
                     <TouchableOpacity
                     style={{
@@ -86,10 +84,15 @@ const Local = ({route, navigation}) => {
                 </View>
             </View>
             : 
-            <View>
-                <ScrollView style={{height: "45%", backgroundColor: "#E5DACE"}}>
-                    {isPrice ? <Precios/> : <Reseñas/> }
-                </ScrollView>
+            <View
+            style={{
+                flex: 1,
+                backgroundColor: "#E5DACE"
+            }}
+            >
+                {isPrice ? <Precios/> : <Reseñas/> }
+                <Text style={{marginVertical: 20}}>Horarios de Lunes a Sábados de 9 a 20 horas.</Text>
+                <Text>TRADICIÓN ITALIANA CON MAS DE 100 AÑOS DE EXPERIENCIA EN EL PAIS</Text>
                 <View style={styles.containerButton}>
                     <TouchableOpacity
                     style={{

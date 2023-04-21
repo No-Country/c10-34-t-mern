@@ -10,6 +10,7 @@ const Pay = ({navigation}) => {
     const insets = useSafeAreaInsets()
     const [modalVisible, setModalVisible] = useState(false);
     const payInfo = useSelector((state)=> state.order)
+    const [isPay, setIsPay] = useState(false);
 
     return(
         <View
@@ -28,8 +29,8 @@ const Pay = ({navigation}) => {
             <View style={styles.containerPayScreen}>
                 <View style={styles.containerPay}>
                     <Text>Reservás con {payInfo.orderInfo.barberName[0]} para el {payInfo.orderInfo.dateName} los siguientes servicios:</Text>
-                    <ScrollView style={styles.servicesContainer}>
                         <FlatList
+                        style={styles.servicesContainer}
                         data={payInfo.orderInfo.services}
                         renderItem={({item}) => (
                             <View style={styles.serviceItem}>
@@ -38,7 +39,6 @@ const Pay = ({navigation}) => {
                             </View>
                         )}
                         />
-                    </ScrollView>
                     <View style={styles.serviceItem}>
                         <Text>Reserva:</Text>
                         <Text>$50</Text>
@@ -65,23 +65,25 @@ const Pay = ({navigation}) => {
                         </TouchableOpacity> 
                     </View>
                     <Text style={{fontWeight: "bold"}}>Este monto se descontará del valor total el dia que te acerques.</Text>
-                    <ModalPay modalState={modalVisible} setModalState={setModalVisible}/>
+                    <ModalPay modalState={modalVisible} setModalState={setModalVisible} setIsPay={setIsPay}/>
                 </View>
             </View> 
             <View style={styles.containerButton}>
+                {isPay ? 
                 <TouchableOpacity
-                    style={{
-                        backgroundColor: "#352F2B",
-                        paddingVertical: 15,
-                        borderRadius: 10,
-                        marginBottom: 25,
-                        width: 250,
-                        alignItems: "center", 
-                    }}
-                    onPress={() => navigation.navigate("Final")}
-                >
-                        <AntDesign name="arrowright" size={24} color="white" />
-                </TouchableOpacity> 
+                style={{
+                    backgroundColor: "#352F2B",
+                    paddingVertical: 15,
+                    borderRadius: 10,
+                    marginBottom: 25,
+                    width: 250,
+                    alignItems: "center", 
+                }}
+                onPress={() => navigation.navigate("Final")}
+            >
+                    <AntDesign name="arrowright" size={24} color="white" />
+            </TouchableOpacity>: <Text>Registre una tarjeta para finalizar el pedido</Text>     
+            }
             </View>
         </View>
     )

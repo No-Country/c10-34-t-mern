@@ -41,13 +41,12 @@ const Profesional = ({navigation}) => {
             <View style={styles.titleContainer}>
                 <Text style={styles.title}>Elegí al profesional</Text>
             </View>
-            <ScrollView style={styles.containerProfesionales}>
                 <FlatList
+                style={styles.containerProfesionales}
                 data={profesionals}
                 renderItem={({item})=><ProfesionalItem data={item}/>}
                 keyExtractor={(item) => item.name}
                 />
-            </ScrollView>
             <View style={styles.containerButton}>
                 <TouchableOpacity
                     style={{

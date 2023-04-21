@@ -1,14 +1,19 @@
 import { Text, View, StyleSheet, ImageBackground, TouchableOpacity } from "react-native"
 import { Entypo, Feather, AntDesign  } from '@expo/vector-icons'; 
+import { useDispatch } from "react-redux";
+import { setBarberName, setBarberNameEmpty, setDateName, setServicesEmpty } from "../../redux/orderSlice/orderSlice";
 
 const CardXl = ({navigation}) => {
+    const dispatch = useDispatch()
     return(
         <View style={{alignItems: "center", justifyContent: "center", padding: 20}}>
-            <TouchableOpacity style={styles.cardContainer} onPress={() => navigation.navigate('Local', {
-                local: {
-                    name: "Adamo"
-                }
-            })}>
+            <TouchableOpacity style={styles.cardContainer} onPress={() => {
+                navigation.navigate('Local', {local: {name: "Adamo"}})
+                dispatch(setServicesEmpty())
+                dispatch(setBarberNameEmpty())
+                dispatch(setDateName(""))
+                }    
+                }>
                 <ImageBackground style={{height: 200, position: "relative"}} source={require('../../assets/adamo.png')} resizeMode="cover">
                     <View style={styles.iconsContainer}>
                         <TouchableOpacity style={styles.iconContainer}>

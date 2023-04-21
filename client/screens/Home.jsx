@@ -67,7 +67,7 @@ const Home = ({ navigation }) => {
           style={isMap ? styles.navItemActive : styles.navItem}
           onPress={() => setIsMap(true)}
         >
-          <Text style={styles.textNav}>Ver mapa</Text>
+          <Text style={styles.textNav}>Buscar</Text>
         </TouchableOpacity>
       </View>
       {isMap ? <Mapa /> : <CercaTuyo navigation={navigation} />}

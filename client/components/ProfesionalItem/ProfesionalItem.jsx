@@ -18,8 +18,13 @@ const ProfesionalItem = ({data}) => {
             style={styles.checkbox}
             value={isChecked}
             onValueChange={()=>{
-                setChecked(true)
-                dispatch(setBarberName(data.name))
+                if(isChecked === false){
+                    setChecked(true)
+                    dispatch(setBarberName(data.name))
+                }
+                if(isChecked === true){
+                    setChecked(false)
+                }
             }}
             color={isChecked ? '#4630EB' : undefined}
             />
