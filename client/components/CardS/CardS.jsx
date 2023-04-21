@@ -1,7 +1,7 @@
 import { ImageBackground, Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useDispatch } from "react-redux";
-import { setBarberName, setBarberNameEmpty, setServicesEmpty } from "../../redux/orderSlice/orderSlice";
+import { setBarberName, setBarberNameEmpty, setServicesEmpty, setDateName } from "../../redux/orderSlice/orderSlice";
 
 const CardS = ({data, navigation}) => {
     const dispatch = useDispatch()
