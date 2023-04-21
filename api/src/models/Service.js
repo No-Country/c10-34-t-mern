@@ -5,7 +5,8 @@ const serviceSchema = new mongoose.Schema({
     price: { type: Number, required: true },
     description: { type: String },
     imgUrl: {
-        type: String
+        type: String,
+        default: ""
     }
 });
 
