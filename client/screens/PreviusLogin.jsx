@@ -8,8 +8,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import { navigation } from "@react-navigation/native";
-
 const PreviusLogin = ({ navigation }) => {
   return (
     <SafeAreaView>
