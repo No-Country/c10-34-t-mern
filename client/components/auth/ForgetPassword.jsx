@@ -13,7 +13,6 @@ import {
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import { Controller, useForm } from "react-hook-form";
 import axios from "axios";
-import * as SecureStore from "expo-secure-store";
 
 import { AntDesign, Feather } from "@expo/vector-icons";
 

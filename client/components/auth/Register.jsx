@@ -13,11 +13,10 @@ import { Controller, useForm } from "react-hook-form";
 import axios from "axios";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { useDispatch } from "react-redux";
-import { setInfoUser } from "../../redux/infoUserSlice/infoUserSlice";
 
 const Register = ({ navigation }) => {
   const { control, handleSubmit, errors } = useForm();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const onSubmit = (data) => {
     const url = "https://barber-nocountry.onrender.com/api/v1/auth/register";
